@@ -1,4 +1,5 @@
 #pragma once
+
 #ifndef FOOTEST_H
 #define FOOTEST_H
 
@@ -11,6 +12,10 @@ public:
 	{
 		//run the default physics and rendering
 		Test::Step(settings);
+
+		//show some text in the main screen
+		g_debugDraw.DrawString(5, m_textLine, "Now we have a foo test");
+		m_textLine += 15;
 	}
 
 	static Test* Create()

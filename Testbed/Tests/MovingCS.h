@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #ifndef MOVINGCS_H
 #define MOVINGCS_H
 
@@ -55,8 +56,10 @@ public:
 	} //do nothing, no scene yet
 
 	//작동을 안함...
-	void Keyboard(unsigned char key)
+	void Keyboard(int key)
 	{
+		using namespace std;
+		cout << "asdf" << endl;
 		switch (key)
 		{
 		case 'q': //move left

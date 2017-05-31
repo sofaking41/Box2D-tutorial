@@ -7,13 +7,16 @@
 class Bodies : public Test
 {
 public:
+
+	b2Body* dynamicBody;
+
 	Bodies() {
 		b2BodyDef myBodyDef;
 		myBodyDef.type = b2_dynamicBody; //this will be a dynamic body
 		myBodyDef.position.Set(0, 20); //set the starting position
 		myBodyDef.angle = 0; //set the starting angle
 
-		b2Body* dynamicBody = m_world->CreateBody(&myBodyDef); // the real body
+		dynamicBody = m_world->CreateBody(&myBodyDef); // the real body
 
 		b2PolygonShape boxShape;
 		boxShape.SetAsBox(1, 1);
@@ -50,16 +53,16 @@ public:
 		// Step 함수를 사용못합니다.....
 		//b2Body* dynamicBody;
 
-		//b2Vec2 pos = dynamicBody->GetPosition();
-		//float angle = dynamicBody->GetAngle();
-		//b2Vec2 vel = dynamicBody->GetLinearVelocity();
-		//float angularVel = dynamicBody->GetAngularVelocity();
-		//m_debugDraw.DrawString(5, m_textLine, 
-		//"Position:%.3f,%.3f Angle:%.3f", pos.x, pos.y, angle * RADTODEG);
-		//m_textLine += 15;
-		//m_debugDraw.DrawString(5, m_textLine,
-		//"Velocity:%.3f,%.3f Angular velocity:%.3f", vel.x, vel.y, angularVel * RADTODEG);
-		//m_textLine += 15;
+		b2Vec2 pos = dynamicBody->GetPosition();
+		float angle = dynamicBody->GetAngle();
+		b2Vec2 vel = dynamicBody->GetLinearVelocity();
+		float angularVel = dynamicBody->GetAngularVelocity();
+		g_debugDraw.DrawString(5, m_textLine, 
+		"Position:%.3f,%.3f Angle:%.3f", pos.x, pos.y, angle * RADTODEG);
+		m_textLine += 15;
+		g_debugDraw.DrawString(5, m_textLine,
+		"Velocity:%.3f,%.3f Angular velocity:%.3f", vel.x, vel.y, angularVel * RADTODEG);
+		m_textLine += 15;
 	}
 
 	static Test* Create()
