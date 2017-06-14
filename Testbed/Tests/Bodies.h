@@ -50,7 +50,7 @@ public:
 	{
 		//run the default physics and rendering
 		Test::Step(settings);
-		// Step 함수를 사용못합니다.....
+		
 		//b2Body* dynamicBody;
 
 		b2Vec2 pos = dynamicBody->GetPosition();

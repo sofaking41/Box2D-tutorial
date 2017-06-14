@@ -58,17 +58,15 @@ public:
 	//작동을 안함...
 	void Keyboard(int key)
 	{
-		using namespace std;
-		cout << "asdf" << endl;
 		switch (key)
 		{
-		case 'q': //move left
+		case 'Q': //move left
 			moveState = MS_LEFT;
 			break;
-		case 'w': //stop
+		case 'W': //stop
 			moveState = MS_STOP;
 			break;
-		case 'e': //move right
+		case 'E': //move right
 			moveState = MS_RIGHT;
 			break;
 		default:
@@ -81,26 +79,28 @@ public:
 	{
 		//run the default physics and rendering
 		Test::Step(settings);
-		b2Vec2 vel = body->GetLinearVelocity();
-		switch (moveState)
+
+		//b2Vec2 vel = body->GetLinearVelocity();
+		/*switch (moveState)
 		{
 		case MS_LEFT:  vel.x = -5; break;
 		case MS_STOP:  vel.x = 0; break;
 		case MS_RIGHT: vel.x = 5; break;
-		}
-		body->SetLinearVelocity(vel);
-		
-		// 점진적 가속... 하지만 구현이 아직 안됨...
-		/*switch (moveState)
-		{
-		case MS_LEFT:  vel.x = b2Max(vel.x - 0.1f, -5.0f); break;
-		case MS_STOP:  vel.x *= 0.98; break;
-		case MS_RIGHT: vel.x = b2Min(vel.x + 0.1f, 5.0f); break;
 		}*/
-		//0.1만큼 이동방향으로 최대 5까지 증가: 정지할때는 이전 프레임속도의 98%로 감소
+		
+		//// 점진적 가속... 하지만 구현이 아직 안됨...
+		//switch (moveState)
+		//{
+		//case MS_LEFT:  vel.x = b2Max(vel.x - 0.1f, -5.0f); break;
+		//case MS_STOP:  vel.x *= 0.98; break;
+		//case MS_RIGHT: vel.x = b2Min(vel.x + 0.1f, 5.0f); break;
+		//}
+		////0.1만큼 이동방향으로 최대 5까지 증가: 정지할때는 이전 프레임속도의 98%로 감소
+		//
+		//body->SetLinearVelocity(vel);
 
 		//힘에 의한 가속
-		/*b2Vec2 vel = body->GetLinearVelocity();
+		b2Vec2 vel = body->GetLinearVelocity();
 		float force = 0;
 		switch (moveState)
 		{
@@ -108,7 +108,7 @@ public:
 		case MS_STOP:  force = vel.x * -10; break;
 		case MS_RIGHT: if (vel.x <  5) force = 50; break;
 		}
-		body->ApplyForce(b2Vec2(force, 0), body->GetWorldCenter());*/
+		body->ApplyForce(b2Vec2(force, 0), body->GetWorldCenter(), true);
 		//
 		//b2Vec2 vel = body->GetLinearVelocity();
 		//float desiredVel = 0;

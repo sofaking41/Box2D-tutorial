@@ -43,12 +43,12 @@ public:
 
 			//in the Step() function
 			//cancel gravity for body 1 only
-			//bodies[1]->ApplyForce(bodies[1]->GetMass() * -m_world->GetGravity(), bodies[1]->GetWorldCenter());
 			//작동불가
 	} //do nothing, no scene yet
 
 	void Step(Settings* settings)
 	{
+		bodies[1]->ApplyForce(bodies[1]->GetMass() * -m_world->GetGravity(), bodies[1]->GetWorldCenter(), true);
 		//run the default physics and rendering
 		Test::Step(settings);
 	}

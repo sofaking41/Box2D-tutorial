@@ -1,3 +1,5 @@
+#include <iostream>
+
 #pragma once
 #ifndef FIXTURES_H
 #define FIXTURES_H
@@ -50,7 +52,7 @@ public:
 		myBodyDef.type = b2_staticBody; //change body type
 		myBodyDef.position.Set(0, 0); //middle, bottom
 
-		//setasEdge 함수가 현버전에 없음.... 직선으로 펴주는 역할
+		//setasEdge 함수가 현버전에 없음. 직선으로 펴주는 역할
 		b2EdgeShape edgeShape;
 		edgeShape.Set(b2Vec2(-15, 0), b2Vec2(15, 0));
 		myFixtureDef.shape = &edgeShape;
@@ -58,6 +60,7 @@ public:
 		b2Body* staticBody = m_world->CreateBody(&myBodyDef);
 		staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
 
+		std::cout << dynamicBody3->GetMass() << std::endl;
 
 		
 		
@@ -66,6 +69,8 @@ public:
 
 	void Step(Settings* settings)
 	{
+		
+
 		//run the default physics and rendering
 		Test::Step(settings);
 

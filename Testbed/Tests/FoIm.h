@@ -1,3 +1,4 @@
+#include <iostream>
 #pragma once
 #ifndef FOIM_H
 #define FOIM_H
@@ -20,7 +21,7 @@ public:
 										 //fixture definition
 			b2FixtureDef myFixtureDef;
 			myFixtureDef.shape = &polygonShape;
-			myFixtureDef.density = 1;
+			myFixtureDef.density = .1;
 
 			//create identical bodies in different positions
 			for (int i = 0; i < 3; i++) {
@@ -41,27 +42,27 @@ public:
 			m_world->CreateBody(&myBodyDef)->CreateFixture(&myFixtureDef);
 	} //do nothing, no scene yet
 	
-	//void Keyboard(unsigned char key)
-	//{
-	//	switch (key)
-	//	{
-	//	case 'q':
-	//		//apply gradual force upwards
-	//		bodies[0]->ApplyForce(b2Vec2(0, 50), bodies[0]->GetWorldCenter());
-	//		break;
-	//	case 'w':
-	//		//apply immediate force upwards
-	//		bodies[1]->ApplyLinearImpulse(b2Vec2(0, 50), bodies[1]->GetWorldCenter());
-	//		break;
-	//	case 'e':
-	//		//teleport or 'warp' to new location
-	//		bodies[2]->SetTransform(b2Vec2(10, 20), 0);
-	//		break;
-	//	default:
-	//		//run default behaviour
-	//		Test::Keyboard(key);
-	//	}
-	//}
+	void Keyboard(int key)
+	{
+		switch (key)
+		{
+		case 'Q':
+			//apply gradual force upwards
+			bodies[0]->ApplyForce(b2Vec2(0, 500), bodies[0]->GetWorldCenter(), true);
+			break;
+		case 'W':
+			//apply immediate force upwards
+			bodies[1]->ApplyLinearImpulse(b2Vec2(0, 50), bodies[1]->GetWorldCenter(), true);
+			break;
+		case 'E':
+			//teleport or 'warp' to new location
+			bodies[2]->SetTransform(b2Vec2(10, 20), 0);
+			break;
+		default:
+			//run default behaviour
+			Test::Keyboard(key);
+		}
+	}
 	// 오류이유를 모르겠습니다...
 
 	void Step(Settings* settings)

@@ -1,7 +1,9 @@
+#include <iostream>
 #pragma once
 #ifndef ROTATINGGA_H
 #define ROTATINGGA_H
 #define DEGTORAD 0.0174532925199432957f
+using namespace std;
 
 class RotatingGA : public Test
 {
@@ -50,6 +52,8 @@ public:
 	  //override parent class
 	void MouseDown(const b2Vec2& p)
 	{
+		cout << "asdf" << endl;
+
 		//store last mouse-down position
 		clickedPoint = p;
 
@@ -60,23 +64,40 @@ public:
 	void Step(Settings* settings)
 	{
 		//run the default physics and rendering
-		Test::Step(settings);
 		//inside Step()
-		glPointSize(4);
+		/*glPointSize(4);
 		glBegin(GL_POINTS);
 		glVertex2f(clickedPoint.x, clickedPoint.y);
-		glEnd();
+		glEnd();*/
 
-		//in Step() function
+		////in Step() function
 		float bodyAngle = body->GetAngle();
 		b2Vec2 toTarget = clickedPoint - body->GetPosition();
 		float desiredAngle = atan2f(-toTarget.x, toTarget.y);
 
+		//body->SetTransform(body->GetPosition(), desiredAngle);
+
+		//body->SetAngularVelocity(0);
+
+		//float totalRotation = desiredAngle - bodyAngle;
+		//float change = 1 * DEGTORAD; //allow 1 degree rotation per time step
+		//float newAngle = bodyAngle + min(change, max(-change, totalRotation));
+		//body->SetTransform(body->GetPosition(), newAngle);
+
+		float nextAngle = bodyAngle + body->GetAngularVelocity() / 3.0;
+		float totalRotation = desiredAngle - nextAngle;//use angle in next time step
+		body->ApplyTorque(totalRotation < 0 ? -10 : 10, true);
+
+#define RADTODEG 57.295779513082320876f
+
+
 		//view these in real time
-		/*m_debugDraw.DrawString(5, m_textLine, "Body angle %.3f", bodyAngle * RADTODEG);
+		g_debugDraw.DrawString(5, m_textLine, "Body angle %.3f", bodyAngle * RADTODEG);
 		m_textLine += 15;
-		m_debugDraw.DrawString(5, m_textLine, "Target angle %.3f", desiredAngle * RADTODEG);
-		m_textLine += 15;*/
+		g_debugDraw.DrawString(5, m_textLine, "Target angle %.3f", desiredAngle * RADTODEG);
+		m_textLine += 15;
+
+		Test::Step(settings);
 
 	}
 

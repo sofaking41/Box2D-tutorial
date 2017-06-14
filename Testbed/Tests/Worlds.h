@@ -22,8 +22,10 @@ public:
 		// 다이나믹 바디
 
 		//중력변경 함수가 사용이 불가...
-		b2Vec2 gravity(0, -9.8); // 중력
+		b2Vec2 gravity(0,0); // 중력
 		bool doSleep = true;
+
+		m_world->SetGravity(gravity);
 		
 		//b2World* myWorld = new b2World(gravity, doSleep);
 		//myWorld->SetGravity(b2Vec2(0, 0));
