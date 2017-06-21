@@ -81,9 +81,11 @@
 #include "VerticalStack.h"
 #include "Web.h"
 #include "UDD.h"
+#include "DrawingMyOb.h"
 
 TestEntry g_testEntries[] =
 {
+	{ "Drawing Your Own Objects", DrawingMyOb::Create },
 	{ "Using Debug Draw", UDD::Create },
 	{ "Jumping", Jumping::Create },
 	{ "Rotating a body to a given angle", RotatingGA::Create },

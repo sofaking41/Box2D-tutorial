@@ -54,6 +54,7 @@ public:
 		moveState = MS_STOP;
 	} //do nothing, no scene yet
 
+	
 	void DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
 	{
 		//set up vertex array

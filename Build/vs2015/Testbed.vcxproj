@@ -230,6 +230,7 @@
     <ClInclude Include="..\..\Testbed\Tests\CustomG.h" />
     <ClInclude Include="..\..\Testbed\Tests\DistanceTest.h" />
     <ClInclude Include="..\..\Testbed\Tests\Dominos.h" />
+    <ClInclude Include="..\..\Testbed\Tests\DrawingMyOb.h" />
     <ClInclude Include="..\..\Testbed\Tests\DumpShell.h" />
     <ClInclude Include="..\..\Testbed\Tests\DynamicTreeTest.h" />
     <ClInclude Include="..\..\Testbed\Tests\EdgeShapes.h" />
