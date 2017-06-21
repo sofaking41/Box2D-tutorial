@@ -80,9 +80,11 @@
 #include "VaryingRestitution.h"
 #include "VerticalStack.h"
 #include "Web.h"
+#include "UDD.h"
 
 TestEntry g_testEntries[] =
 {
+	{ "Using Debug Draw", UDD::Create },
 	{ "Jumping", Jumping::Create },
 	{ "Rotating a body to a given angle", RotatingGA::Create },
 	{ "Moving a body at a constant speed", MovingCS::Create },

@@ -263,6 +263,7 @@
     <ClInclude Include="..\..\Testbed\Tests\Tiles.h" />
     <ClInclude Include="..\..\Testbed\Tests\TimeOfImpact.h" />
     <ClInclude Include="..\..\Testbed\Tests\Tumbler.h" />
+    <ClInclude Include="..\..\Testbed\Tests\UDD.h" />
     <ClInclude Include="..\..\Testbed\Tests\VaryingFriction.h" />
     <ClInclude Include="..\..\Testbed\Tests\VaryingRestitution.h" />
     <ClInclude Include="..\..\Testbed\Tests\VerticalStack.h" />
